@@ -203,7 +203,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <div class="logo">DE<b>CASA</b></div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="logo">DE<b>CASA</b></div>
+    <button id="btnInstallPWA" style="display:none;background:#1a56db;color:#fff;border:none;border-radius:20px;padding:5px 13px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;letter-spacing:.3px">📲 Instalar App</button>
+  </div>
   <div class="tabs">
     <button class="tab on"  data-screen="novo">+ Novo Orcamento</button>
     <button class="tab"     data-screen="pipeline">Pipeline</button>
@@ -3180,23 +3183,22 @@ var _deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',function(e){
   e.preventDefault();
   _deferredPrompt=e;
-  var btn=document.createElement('button');
-  btn.id='btnInstallPWA';
-  btn.textContent='📲 Instalar App';
-  btn.style.cssText='position:fixed;bottom:80px;right:16px;z-index:999;background:#12296a;color:#fff;border:none;border-radius:24px;padding:10px 20px;font-size:13px;font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,.25);cursor:pointer;display:flex;align-items:center;gap:6px';
-  btn.onclick=function(){
-    if(!_deferredPrompt)return;
-    _deferredPrompt.prompt();
-    _deferredPrompt.userChoice.then(function(r){
-      if(r.outcome==='accepted')btn.remove();
-      _deferredPrompt=null;
-    });
-  };
-  document.body.appendChild(btn);
+  var btn=document.getElementById('btnInstallPWA');
+  if(btn){
+    btn.style.display='';
+    btn.onclick=function(){
+      if(!_deferredPrompt)return;
+      _deferredPrompt.prompt();
+      _deferredPrompt.userChoice.then(function(r){
+        if(r.outcome==='accepted')btn.style.display='none';
+        _deferredPrompt=null;
+      });
+    };
+  }
 });
 window.addEventListener('appinstalled',function(){
   var btn=document.getElementById('btnInstallPWA');
-  if(btn)btn.remove();
+  if(btn)btn.style.display='none';
   tip('App instalado com sucesso!');
 });
 </script>
