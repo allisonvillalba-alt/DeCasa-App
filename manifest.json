@@ -1,0 +1,43 @@
+{
+  "name": "DeCasa Esquadrias",
+  "short_name": "DeCasa",
+  "description": "Sistema de orçamentos e gestão DeCasa Esquadrias",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f1729",
+  "theme_color": "#12296a",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "shortcuts": [
+    {
+      "name": "Novo Orçamento",
+      "short_name": "Orçamento",
+      "url": "./index.html#novo",
+      "description": "Abrir novo orçamento"
+    },
+    {
+      "name": "Pipeline",
+      "short_name": "Pipeline",
+      "url": "./index.html#pipeline",
+      "description": "Ver pipeline de vendas"
+    }
+  ]
+}
